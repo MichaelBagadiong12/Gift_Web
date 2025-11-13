@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="first-page.css">
+    <title>Open Box</title>
+</head>
+<body>
+    <div id="welcomeScreen" class="loader-page">
+        <div class="loader-content">
+            <h1>Welcome Love! I made this just for you</h1>
+            <!--<img src="heart-sticker.gif">-->
+        </div>
+
+        <div id="hearts"></div>
+    </div>
+
+    <section>
+        <div id="mainContent" style="display: none;" class="home-container">
+            <div class="home-page">
+                <div class="gif">
+                    <img src="sticker.gif">
+                </div>
+                <h1>Hi Lee!<br><span class="highlight">Also known as the person that I admire the most.</span></h1>
+                <h2>I have a little surprise for you</h2>
+                <div class="button">
+                    <a href="content.html">Open Present</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<script>
+    window.onload = function() {
+    let welcomeScreen = document.getElementById("welcomeScreen");
+    let mainContent = document.getElementById("mainContent")
+    let timeLeft = 5; //Countdown seconds before the main content shows
+
+let timer = setInterval(function(){
+    timeLeft--;
+
+    if (timeLeft <= 0) {
+        clearInterval(timer);
+
+        //fadeout animation after the welcome screen ends
+        welcomeScreen.classList.add("fade-out");
+
+        setTimeout(() => {
+            welcomeScreen.style.display = "none";
+            mainContent.style.display = "block";
+            mainContent.classList.add("fade-in");
+        },1000);
+    }
+    }, 1000);
+
+    sprinkleHearts();
+};
+
+window.addEventListener("load", () => {
+    const preloader = document.getElementById("preloader");
+
+    setTimeout(() =>{
+        preloader.classList.add("fade-out");
+        setTimeout(() => preloader.style.display = "none", 600);
+    }, 2500);
+});
+
+function sprinkleHearts() {
+    const heartsContainer = document.getElementById("hearts");
+    for (let i = 0; i < 100; i++) {
+        const heart = document.createElement("img");
+        heart.src = "hearts.gif";
+        heart.classList.add("heart");
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.top = Math.random() * 100 + "vh";
+        heart.style.width = Math.random() * 30 + 20 + "px";
+        heart.style.opacity = Math.random() * 0.8 + 0.6;
+        const duration = Math.random() * 3 + 3;
+        heart.style.animation = `floatUp ${duration}s ease-out forwards`;
+        heartsContainer.appendChild(heart);
+        setTimeout(() => heart.remove(), duration * 1500);
+    }
+}
+</script>
+
+</body>
+</html>

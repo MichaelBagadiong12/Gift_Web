@@ -1,0 +1,486 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Arbutus&family=Bangers&family=Bungee&family=Cal+Sans&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Eater&family=Fontdiner+Swanky&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nosifer&family=Noto+Sans+Glagolitic&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Press+Start+2P&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik+Doodle+Shadow&family=Tangerine:wght@400;700&display=swap');
+
+
+body{
+    background-color: rgb(254, 196, 206);
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#preloader{
+    position: fixed;
+    display: flex;
+    align-items: center;
+    z-index: 3;
+    transition: opacity 0.8s ease;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    background: white;
+    height: 100vh;
+    background-color: rgb(254, 196, 206);
+}
+
+#preloader img{
+    height: 180px;
+    width: auto;
+    margin-bottom: 8px;
+    margin-left: 30px;
+}
+
+.progress-bar{
+    width: 230px;
+    background: rgb(102, 102, 102);
+    overflow: hidden;
+    height: 35px;
+    border-radius: 20px;
+}
+
+.progress{
+    width: 0%;
+    height: 100%;
+    animation: loadBar 2s ease-in-out forwards;
+    background: linear-gradient(90deg, #ff7a7a, #ff7a7a);
+}
+
+@keyframes loadBar {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+.fade-out{
+    opacity: 0;
+}
+
+.scrolling-text{
+    display: flex;
+    background-color: rgb(255, 27, 114);
+    position: fixed;
+    width: 100%;
+    padding: 2px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    overflow: hidden;
+    top: 0;
+    left: 0;
+}
+
+.scrolling-content{
+    display: inline-flex;
+    align-items: center;
+    animation: scrollText 12s linear infinite;
+    position: relative;
+}
+
+.scrolling-text p{
+    font-size: 15px;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 500;
+    color: white;
+}
+
+
+.scrolling-text img{
+    height: 25px;
+    width: auto;
+}
+
+@keyframes scrollText{ 
+    0% {
+        transform: translateX(100vw);
+    }
+    100%{
+        transform: translateX(-100%);
+    }
+}
+
+.mail{
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.mail img{
+    height: 550px;
+    width: auto;
+    display: block;
+}
+
+.mail h1{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white; /* or any color that contrasts with your image */
+    font-size: 30px;
+    text-align: center;
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
+    animation: blink 3s infinite; /* apply blinking animation */
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+}
+
+.vanish{
+    opacity: 0;
+    transform: scale(0.8);
+}
+
+.second-content{
+    display: none;
+    transition: opacity 1s ease;
+    background-color: rgb(255, 27, 114);
+    width: 800px;
+    height: auto;
+    text-align: left;
+    padding: 1px 50px 20px;
+    border-radius: 5px;
+    z-index: 10;
+}
+
+.second-content h1{
+    text-align: center;
+    color: white;
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-size: 39px;
+}
+
+.second-content.show{
+    display: block;
+    opacity: 1;
+    animation: letterPop 1s ease forwards;
+}
+
+.inner-box-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+
+.inner-box{
+    background: white;
+    z-index: 1;
+    padding: 10px 45px;
+    border-radius: 10px;
+    border: 2px solid rgb(255, 0, 0);
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    max-height: 350px;
+    position: relative;
+}
+
+/*
+.inner-box::-webkit-scrollbar{
+    width: 20px;
+
+}
+
+.inner-box::-webkit-scrollbar-track{
+    background: linear-gradient(180deg, #ffe1eb, #ffc2d9);
+    border-radius: 10px;
+    box-shadow: inset 0 0 4px rgba(255, 150, 180, 0.4);
+}
+
+.inner-box::-webkit-scrollbar-thumb{
+    background: url('pink-heart.png') no-repeat top;
+    background-size: 30px 30px;  resize heart
+    border: none;
+    position: relative;
+    z-index: 11;
+    position: absolute;
+}
+
+.inner-box::-webkit-scrollbar-thumb:hover {
+    filter: drop-shadow(0 0 6px #ff4d88);
+    transform: scale(1.1);
+    transition: all 0.2s ease;
+}
+*/
+
+.inner-box h3{
+    font-family: "DM Sans", sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.inner-box p{
+    font-family: "DM Sans", sans-serif;
+    font-size: 15px;
+    line-height: 28px;
+}
+
+.inner-box::-webkit-scrollbar{
+    width: 10px;
+}
+
+.inner-box::-webkit-scrollbar-track{
+    background: linear-gradient(180deg, #ffe1eb, #ffc2d9);
+    border-radius: 10px;
+    box-shadow: inset 0 0 4px rgba(255, 150, 180, 0.4);
+}
+
+.custom-scrollbar{
+    position: absolute;
+    top: 0;
+    width: 40px;
+    height: 33px;
+    background: url('pink-heart.png') no-repeat center;
+    background-size: cover;
+    z-index: 20;
+    transition: transform 0.1s linear;
+    right: -14px;
+}
+
+
+.btn-group{
+    text-align: right;
+    margin-top: 12px;
+}
+
+.next-btn{
+    font-size: 17px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(255, 27, 114);    border: 1px solid red;
+    padding: 13px;
+    border-radius: 10px;
+    cursor: pointer;
+    height: 45px;
+}
+
+.third-content {
+    display: none;
+    background-color: rgb(255, 27, 114);
+    width: 600px;
+    padding: 20px 40px;
+    border-radius: 8px;
+    color: white;
+    text-align: center;
+    font-family: "Playfair Display", serif;
+    opacity: 0;
+    transition: opacity 10s ease;
+}
+
+.third-content.show {
+    display: block;
+    opacity: 1;
+    animation: letterPop 1s ease forwards, glow 2.5s ease-in-out 1s infinite alternate;
+}
+
+
+.third-content h2{
+    font-size: 32px;
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    letter-spacing: 2px;
+    font-weight: 800;
+    margin-bottom: 45px;
+}
+
+.choice-buttons{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 15px;
+}
+
+.choice-buttons button{
+    background-color: rgb(255, 115, 115);
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    padding: 15px 90px;
+    border: none;
+    border-radius: 10px;
+    font-family: "DM Sans", sans-serif;
+    cursor: pointer;
+}
+
+.choice-buttons button:hover{
+    transform: scale(1.1);
+    transition: all 0.5s ease;
+}
+
+#yesBtn:hover{
+    background-color: #90EE90;
+}
+
+#noBtn:hover{
+    background-color: 	#e02932
+}
+
+#hearts{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 100;
+}
+
+.heart{
+    position: absolute;
+    font-size: 22px;
+    color: #ff2b7a;
+    animation: floatUp 2s ease-out forwards;
+}
+
+@keyframes floatUp{
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-250px) scale(0.5); opacity: 0; }
+}
+
+#message-screen{
+    position: fixed;
+    inset: 0;
+    background-color: rgb(254,196,206);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgb(255,27,114);
+    font-family: "Playfair Display", serif;
+    text-align: center;
+    z-index: 200;
+    margin: 0;
+    padding: 0;
+    font-style: italic;
+    font-size: 20px;
+}
+
+#message-screen img {
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+#message-screen button {
+    background-color: rgb(255,27,114);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 15px 30px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 19px;
+    transition: 0.3s;
+}
+
+#message-screen button:hover {
+    transform: scale(1.1);
+}
+
+
+
+
+@keyframes mailOpen {
+    0% { transform: scale(1) rotate(0deg); }
+    20% { transform: scale(1.1) rotate(-3deg); }
+    40% { transform: scale(1.1) rotate(3deg); }
+    60% { transform: scale(1.1) rotate(-2deg); }
+    80% { transform: scale(1.1) rotate(2deg); }
+    100% { transform: scale(0.8) rotate(0deg); opacity: 0; }
+}
+
+.mail.opening{
+    animation: mailOpen 1s ease forwards;
+}
+
+@keyframes blink {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0; }
+}
+
+@keyframes letterPop {
+    0% {
+        transform: scale(0.5) translateY(40px);
+        opacity: 0;
+    }
+
+    60% {
+        transform: scale(1.05) translateY(-10px);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 0px rgba(255, 124, 189, 0);
+    }
+    50% {
+        box-shadow: 0 0 35px rgba(255, 0, 0, 0.7),
+                    0 0 15px rgba(255, 0, 204, 0.5);
+    }
+    100% {
+        box-shadow: 0 0 10px rgba(255, 2, 2, 0.4);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .mail img{
+        height: 320px;
+    }
+
+    .mail h1{
+        font-size: 22px;
+    }
+
+    .second-content{
+        width: 250px;
+        padding: 5px 30px 20px;
+    }
+
+    .second-content h1{
+        font-size: 30px;
+    }
+
+    .inner-box{
+        padding: 10px 20px;
+        max-height: 430px;
+    }
+
+    .inner-box h3{
+        font-size: 16px;
+    }
+
+    .inner-box p{
+        font-size: 12px;
+    }
+
+    .next-btn{
+        font-size: 14px;
+    }
+
+    .third-content{
+        width: 210px;
+        height: 265px;
+    }
+
+    .third-content h2{
+        font-size: 22px;
+        margin-bottom: 30px;
+    }
+
+    .choice-buttons{
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 0;
+    }
+
+    .choice-buttons button{
+        padding: 15px 30px;
+        font-size: 16px;
+        margin-bottom: 0;
+    }
+
+    #message-screen{
+        font-size: 16px;
+    }
+}
